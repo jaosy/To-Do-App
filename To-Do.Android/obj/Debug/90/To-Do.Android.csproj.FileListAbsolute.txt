@@ -491,3 +491,4 @@ D:\College\Summer\Critical Hit Technologies\To-Do\To-Do.Android\obj\Debug\90\sta
 D:\College\Summer\Critical Hit Technologies\To-Do\To-Do.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\College\Summer\Critical Hit Technologies\To-Do\To-Do.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 D:\College\Summer\Critical Hit Technologies\To-Do\To-Do.Android\obj\Debug\90\res\drawable\note.png
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do.Android\obj\Debug\90\res\drawable\check.png

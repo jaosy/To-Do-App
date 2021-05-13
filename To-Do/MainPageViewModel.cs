@@ -23,6 +23,11 @@ namespace To_Do
                 TheToDo = string.Empty; // clear in editor
             }
             );
+
+            MarkDoneCommand = new Command(() =>
+            {
+                AllToDos.Remove(SelectedToDo);
+            });
         }
 
         string theToDo;
@@ -35,7 +40,7 @@ namespace To_Do
                 theToDo = value;
 
                 // lets listening view know that the to-do property changed
-                // PropertyChangingEventArgs contains the event data
+                // PropertyChangedEventArgs contains the event data
                 var args = new PropertyChangedEventArgs(nameof(TheToDo));
 
                 // sender is this view model,
@@ -49,8 +54,13 @@ namespace To_Do
         
         public ObservableCollection<string> AllToDos { get; set; }
 
+        public Boolean Done { get; set; }
+
+
+        public string SelectedToDo { get; set; }
+
         /* button commands */
         public Command SaveCommand { get; }
-    
+        public Command MarkDoneCommand { get; }
     }
 }

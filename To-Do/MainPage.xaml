@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:To_Do" 
-             x:Class="To_Do.MainPage">
+             x:Class="To_Do.MainPage"
+             x:Name="MainPageViewModel">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -12,9 +13,10 @@
         <!-- define grid dimensions -->
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -36,24 +38,34 @@
         <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                 Text="Save"
                 TextColor="DarkGreen"
-                Margin="10,10"
                 BackgroundColor="PaleGreen"
                 Command="{Binding SaveCommand}"/>
+
         
-        <!-- collection view to display everything -->
+
+        <!-- ListView - scrollable list to display everything -->
         <!-- bind to List of all to-do notes -->
-        <CollectionView ItemsSource="{Binding AllToDos}">
-            <CollectionView.ItemTemplate>
+        <ListView x:Name="listOfToDos" Margin="20"
+                  ItemsSource="{Binding AllToDos}"
+                  Grid.Row="3" Grid.ColumnSpan="2"
+                  SelectedItem="{Binding SelectedToDo}">
+      
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout> <!-- looks like a list, default vertical -->
-                        <Frame> <!-- wraps (typically a control) with a configurable border -->
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding .}"/>
-                        </Frame>
-                    </StackLayout>
+                            <Button Text="Mark Done"
+                            Command="{Binding BindingContext.MarkDoneCommand,
+                                Source={x:Reference Name=MainPageViewModel}}"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"/>
+                        </StackLayout>    
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate> 
+            </ListView.ItemTemplate>
             
-        </CollectionView>
+        </ListView>
 
     </Grid>
     
