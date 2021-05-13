@@ -1,0 +1,13 @@
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\bin\Debug\netstandard2.0\To-Do.deps.json
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\bin\Debug\netstandard2.0\To-Do.dll
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\bin\Debug\netstandard2.0\ref\To-Do.dll
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\bin\Debug\netstandard2.0\To-Do.pdb
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\To-Do.AssemblyInfoInputs.cache
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\To-Do.AssemblyInfo.cs
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\To-Do.csproj.CoreCompileInputs.cache
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\XamlC.stamp
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\To-Do.dll
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\ref\To-Do.dll
+D:\College\Summer\Critical Hit Technologies\To-Do\To-Do\obj\Debug\netstandard2.0\To-Do.pdb

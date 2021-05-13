@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:To_Do" 
+             x:Class="To_Do.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- define grid dimensions -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- note icon in top bar -->
+        <Image Source="note.png"
+               Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+               BackgroundColor="LightPink"/>
+        
+        <!-- to-do note editor box -->
+        <Editor Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                Placeholder="What do you need to do? ✍️ "
+                Margin="10,10"
+                Text="{Binding TheToDo}"/> <!-- Bound to TheToDo method -->
+
+        <!-- save to-do button -->
+        <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                Text="Save"
+                TextColor="DarkGreen"
+                Margin="10,10"
+                BackgroundColor="PaleGreen"
+                Command="{Binding SaveCommand}"/>
+        
+        <!-- collection view to display everything -->
+        <!-- bind to List of all to-do notes -->
+        <CollectionView ItemsSource="{Binding AllToDos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout> <!-- looks like a list, default vertical -->
+                        <Frame> <!-- wraps (typically a control) with a configurable border -->
+                            <Label Text="{Binding .}"/>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate> 
+            
+        </CollectionView>
+
+    </Grid>
+    
+</ContentPage>
