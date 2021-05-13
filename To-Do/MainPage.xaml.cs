@@ -10,9 +10,13 @@ namespace To_Do
 {
     public partial class MainPage : ContentPage
     {
+        private MainPageViewModel vm;
         public MainPage()
         {
             InitializeComponent();
+
+            vm = new MainPageViewModel();
+            BindingContext = vm;
         }
     }
 }

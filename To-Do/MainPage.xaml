@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:To_Do" 
+             x:Name="ThisPage"
              x:Class="To_Do.MainPage">
 
     <ContentPage.BindingContext>
@@ -12,8 +13,8 @@
         <!-- define grid dimensions -->
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
@@ -25,7 +26,8 @@
         <!-- note icon in top bar -->
         <Image Source="note.png"
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               BackgroundColor="LightPink"/>
+               Margin="5,3"
+               />
         
         <!-- to-do/done ratio in top bar -->
         <!-- <Label Text="{Binding AllDone.Count}"
@@ -36,7 +38,7 @@
         <!-- to-do note editor box -->
         <Editor Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                 Placeholder="What do you need to do? ✍️ "
-                Margin="10,10"
+                Margin="10,5"
                 Text="{Binding TheToDo}"/> <!-- Bound to TheToDo method -->
 
         <!-- save to-do button -->
@@ -44,13 +46,9 @@
                 Text="Save"
                 TextColor="DarkGreen"
                 BackgroundColor="PaleGreen"
+                Margin="10,5"
                 Command="{Binding SaveCommand}"/>
 
-        <Button Text="Mark Done"
-                Command="{Binding MarkDoneCommand}"
-                Grid.Row="4"
-                Grid.ColumnSpan="2"/>
-        
         <!-- ListView - scrollable list to display everything -->
         <!-- bind to List of all to-do notes -->
         <ListView x:Name="listOfToDos" Margin="20"
@@ -62,6 +60,11 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding .}"/>
+
+                            <Button Text="Mark Done"
+                                    Command="{Binding Source={x:Reference listOfToDos},
+                                Path=BindingContext.MarkDoneCommand}"
+                                    CommandParameter="{Binding .}"/>
                         </StackLayout>    
                     </ViewCell>
                 </DataTemplate>
