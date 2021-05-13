@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:To_Do" 
-             x:Class="To_Do.MainPage"
-             x:Name="MainPageViewModel">
+             x:Class="To_Do.MainPage">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -28,6 +27,12 @@
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                BackgroundColor="LightPink"/>
         
+        <!-- to-do/done ratio in top bar -->
+        <!-- <Label Text="{Binding AllDone.Count}"
+               Grid.Row="0"
+               Grid.Column="1">
+        </Label> -->
+
         <!-- to-do note editor box -->
         <Editor Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
                 Placeholder="What do you need to do? ✍️ "
@@ -41,25 +46,22 @@
                 BackgroundColor="PaleGreen"
                 Command="{Binding SaveCommand}"/>
 
+        <Button Text="Mark Done"
+                Command="{Binding MarkDoneCommand}"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"/>
         
-
         <!-- ListView - scrollable list to display everything -->
         <!-- bind to List of all to-do notes -->
         <ListView x:Name="listOfToDos" Margin="20"
                   ItemsSource="{Binding AllToDos}"
                   Grid.Row="3" Grid.ColumnSpan="2"
                   SelectedItem="{Binding SelectedToDo}">
-      
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding .}"/>
-                            <Button Text="Mark Done"
-                            Command="{Binding BindingContext.MarkDoneCommand,
-                                Source={x:Reference Name=MainPageViewModel}}"
-                Grid.Row="4"
-                Grid.ColumnSpan="2"/>
                         </StackLayout>    
                     </ViewCell>
                 </DataTemplate>

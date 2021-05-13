@@ -12,21 +12,31 @@ namespace To_Do
        a property is changed */
     public class MainPageViewModel : INotifyPropertyChanged
     {
+
         public MainPageViewModel()
         {
             AllToDos = new ObservableCollection<string>();
+            AllDone = new ObservableCollection<string>();
+        
 
             SaveCommand = new Command(() =>
             {
-                AllToDos.Add(TheToDo); // call to TheToDo returns theToDo string
-
+                if (TheToDo.Length == 0)
+                {
+                    App.Current.MainPage.DisplayAlert("To-Do is empty! 😭", "You're lying to yourself if you have nothing to do", null, "Ok");
+                }
+                else
+                {
+                    AllToDos.Add(TheToDo); // call to TheToDo returns theToDo string
+                }
                 TheToDo = string.Empty; // clear in editor
             }
             );
 
             MarkDoneCommand = new Command(() =>
-            {
+            { 
                 AllToDos.Remove(SelectedToDo);
+                AllDone.Add(SelectedToDo);
             });
         }
 
@@ -54,8 +64,7 @@ namespace To_Do
         
         public ObservableCollection<string> AllToDos { get; set; }
 
-        public Boolean Done { get; set; }
-
+        public ObservableCollection<string> AllDone { get; set; }
 
         public string SelectedToDo { get; set; }
 
