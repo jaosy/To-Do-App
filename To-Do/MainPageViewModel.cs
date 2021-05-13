@@ -33,11 +33,15 @@ namespace To_Do
             }
             );
 
+            MarkDoneCommand = new Command<object>(DeleteThis);
+            
+            /*
             MarkDoneCommand = new Command(() =>
             { 
-                AllToDos.Remove(SelectedToDo);
-                AllDone.Add(SelectedToDo);
+                //AllToDos.Remove(SelectedToDo);
+                //AllDone.Add(SelectedToDo);
             });
+            */
         }
 
         string theToDo;
@@ -59,6 +63,13 @@ namespace To_Do
             }
         }
 
+        private void DeleteThis(object obj)
+        {
+            var task = obj as string;
+            AllToDos.Remove(task);
+            AllDone.Add(SelectedToDo);
+        }
+        
         // represents the method that will handle the PropertyChanging event
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -70,6 +81,6 @@ namespace To_Do
 
         /* button commands */
         public Command SaveCommand { get; }
-        public Command MarkDoneCommand { get; }
+        public Command<object> MarkDoneCommand { get; }
     }
 }

@@ -59,12 +59,13 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding .}"/>
-
                             <Button Text="Mark Done"
                                     Command="{Binding Source={x:Reference listOfToDos},
-                                Path=BindingContext.MarkDoneCommand}"
+                                    Path=BindingContext.MarkDoneCommand}"
                                     CommandParameter="{Binding .}"/>
+
+                            <Label Text="{Binding .}"
+                                   VerticalOptions="Center"/>
                         </StackLayout>    
                     </ViewCell>
                 </DataTemplate>
