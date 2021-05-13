@@ -26,8 +26,7 @@
         <!-- note icon in top bar -->
         <Image Source="note.png"
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               Margin="5,3"
-               />
+               Margin="5,5"/>
         
         <!-- to-do/done ratio in top bar -->
         <!-- <Label Text="{Binding AllDone.Count}"
@@ -51,7 +50,7 @@
 
         <!-- ListView - scrollable list to display everything -->
         <!-- bind to List of all to-do notes -->
-        <ListView x:Name="listOfToDos" Margin="20"
+        <ListView x:Name="listOfToDos" Margin="5"
                   ItemsSource="{Binding AllToDos}"
                   Grid.Row="3" Grid.ColumnSpan="2"
                   SelectedItem="{Binding SelectedToDo}">
@@ -59,20 +58,21 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Mark Done"
+                            <ImageButton
+                                    Source="check.png"
+                                    BackgroundColor="White"
+                                    Scale="0.6"
                                     Command="{Binding Source={x:Reference listOfToDos},
                                     Path=BindingContext.MarkDoneCommand}"
                                     CommandParameter="{Binding .}"/>
 
                             <Label Text="{Binding .}"
                                    VerticalOptions="Center"/>
-                        </StackLayout>    
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
         </ListView>
-
     </Grid>
     
 </ContentPage>

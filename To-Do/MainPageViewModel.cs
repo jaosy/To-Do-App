@@ -15,13 +15,12 @@ namespace To_Do
 
         public MainPageViewModel()
         {
-            AllToDos = new ObservableCollection<string>();
-            AllDone = new ObservableCollection<string>();
+            AllToDos = new ObservableCollection<string>(); // current to-dos
+            AllDone = new ObservableCollection<string>(); // to-dos marked done
         
-
             SaveCommand = new Command(() =>
             {
-                if (TheToDo.Length == 0)
+                if (TheToDo.Length == 0 || TheToDo==null)
                 {
                     App.Current.MainPage.DisplayAlert("To-Do is empty! 😭", "You're lying to yourself if you have nothing to do", null, "Ok");
                 }
@@ -34,14 +33,6 @@ namespace To_Do
             );
 
             MarkDoneCommand = new Command<object>(DeleteThis);
-            
-            /*
-            MarkDoneCommand = new Command(() =>
-            { 
-                //AllToDos.Remove(SelectedToDo);
-                //AllDone.Add(SelectedToDo);
-            });
-            */
         }
 
         string theToDo;
@@ -63,11 +54,12 @@ namespace To_Do
             }
         }
 
+        /* handles checking off a to-do task */
         private void DeleteThis(object obj)
         {
             var task = obj as string;
             AllToDos.Remove(task);
-            AllDone.Add(SelectedToDo);
+            AllDone.Add(task);
         }
         
         // represents the method that will handle the PropertyChanging event
@@ -77,7 +69,7 @@ namespace To_Do
 
         public ObservableCollection<string> AllDone { get; set; }
 
-        public string SelectedToDo { get; set; }
+        // public string SelectedToDo { get; set; }
 
         /* button commands */
         public Command SaveCommand { get; }
