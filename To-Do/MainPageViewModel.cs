@@ -20,19 +20,32 @@ namespace To_Do
         
             SaveCommand = new Command(() =>
             {
+                // to catch if user tries to save empty to-do task
                 if (TheToDo.Length == 0 || TheToDo == null)
                 {
                     App.Current.MainPage.DisplayAlert("To-Do is empty! 😭", "You're lying to yourself if you have nothing to do", null, "Ok");
                 }
                 else
                 {
-                    AllToDos.Add(TheToDo); // call to TheToDo returns theToDo string
-                    TheToDo = string.Empty; // clear in editor
+                    AllToDos.Add(TheToDo); 
+                    TheToDo = string.Empty; 
                 }
             }
             );
 
             MarkDoneCommand = new Command<object>(DeleteThis);
+        }
+
+        /* allows us to change color of PlaceholderNote by binding
+           (high contrast theme) */
+        public string PlaceholderNote
+        { 
+            get => "What do you need to do? ✍️";
+
+            set {
+                var args = new PropertyChangedEventArgs(nameof(PlaceholderNote));
+                PropertyChanged?.Invoke(this, args);
+            } 
         }
 
         string theToDo;

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:To_Do" 
              x:Name="ThisPage"
-             x:Class="To_Do.MainPage">
+             x:Class="To_Do.MainPage"
+             BackgroundColor="{DynamicResource pageCol}">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -24,9 +25,17 @@
         </Grid.ColumnDefinitions>
 
         <!-- note icon in top bar -->
-        <Image Source="note.png"
+        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+               Margin="5,5">
+            <Image.Source>
+                <FileImageSource File="{Binding NoteIcon}"/>
+            </Image.Source>
+        </Image>
+
+        <!-- </Image> Source="{DynamicResource noteImage}"
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               Margin="5,5"/>
+               Margin="5,5"/>-->
+
         
         <!-- to-do/done ratio in top bar -->
         <!-- <Label Text="{Binding AllDone.Count}"
@@ -36,14 +45,16 @@
 
         <!-- to-do note editor box -->
         <Editor Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
-                Placeholder="What do you need to do? ✍️ "
+                Placeholder="{Binding PlaceholderNote}"
+                PlaceholderColor="{DynamicResource textCol}"
                 Margin="10,5"
-                Text="{Binding TheToDo}"/> <!-- Bound to TheToDo method -->
+                Text="{Binding TheToDo}"
+                TextColor="{DynamicResource textCol}"/> <!-- Bound to TheToDo method -->
 
         <!-- save to-do button -->
         <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                 Text="Save"
-                TextColor="DarkGreen"
+                TextColor="{DynamicResource saveTextCol}"
                 BackgroundColor="PaleGreen"
                 Margin="10,5"
                 Command="{Binding SaveCommand}"/>
@@ -53,26 +64,66 @@
         <ListView x:Name="listOfToDos" Margin="5"
                   ItemsSource="{Binding AllToDos}"
                   Grid.Row="3" Grid.ColumnSpan="2"
-                  SelectedItem="{Binding SelectedToDo}">
+                  SelectedItem="{Binding SelectedToDo}"
+                  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <ImageButton
-                                    Source="check.png"
-                                    BackgroundColor="White"
+                                    Source="{DynamicResource buttonImage}"
+                                    BackgroundColor="{DynamicResource pageCol}"
                                     Scale="0.6"
                                     Command="{Binding Source={x:Reference listOfToDos},
                                     Path=BindingContext.MarkDoneCommand}"
-                                    CommandParameter="{Binding .}"/>
-
+                                    CommandParameter="{Binding .}"/> <!-- tapped --> 
                             <Label Text="{Binding .}"
+                                   TextColor="{DynamicResource textCol}"
                                    VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <!-- change color palette -->
+        <Button Clicked="OnHighContrast"
+                Text="High Contrast"
+                BackgroundColor="Aquamarine"
+                TextColor="Red"
+                Grid.Row="4"
+                Grid.Column="0"/>
+        <Button Clicked="OnLight"
+                Text="Light"
+                Grid.Row="4"
+                Grid.Column="1"/>
     </Grid>
+
+    <ContentPage.Resources>
+        <ImageSource x:Key="buttonImage">"check.png"</ImageSource>
+        <ImageSource x:Key="noteImage">"note.png"</ImageSource>
+        <Color x:Key="textCol">slategray</Color>
+        <Color x:Key="saveCol">palegreen</Color>
+        <Color x:Key="saveTextCol">darkgreen</Color>
+        <Color x:Key="pageCol">white</Color>
+        <!-- 
+                <Style x:Key="HighContrastButtons" TargetType="ImageButton">
+            <Setter Property="Source" Value="hc_check.png"/>
+        </Style>
+
+        <Style x:Key="HighContrastText" TargetType="Label">
+            <Setter Property="TextColor" Value="Yellow"/>
+        </Style>
+
+        <Style x:Key="HighContrastSave" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#00ff00"/>
+        </Style>
+
+        <Style x:Key="HighContrastPage" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="Black"/>
+        </Style>
+        -->
+
+    </ContentPage.Resources>
     
 </ContentPage>
