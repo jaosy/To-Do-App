@@ -13,11 +13,12 @@
     <Grid>
         <!-- define grid dimensions -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.25*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,23 +26,17 @@
         </Grid.ColumnDefinitions>
 
         <!-- note icon in top bar -->
-        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               Margin="5,5">
-            <Image.Source>
-                <FileImageSource File="{Binding NoteIcon}"/>
-            </Image.Source>
-        </Image>
-
-        <!-- </Image> Source="{DynamicResource noteImage}"
+        <Image Source="{Binding NoteIcon}"
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               Margin="5,5"/>-->
-
-        
+               Margin="5,5"/>
+            
         <!-- to-do/done ratio in top bar -->
-        <!-- <Label Text="{Binding AllDone.Count}"
+        <!--
+        <Label Text="{Binding AllDone.Count}"
                Grid.Row="0"
                Grid.Column="1">
-        </Label> -->
+        </Label>
+        -->
 
         <!-- to-do note editor box -->
         <Editor Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
@@ -51,78 +46,79 @@
                 Text="{Binding TheToDo}"
                 TextColor="{DynamicResource textCol}"/> <!-- Bound to TheToDo method -->
 
-        <!-- save to-do button -->
+        <!-- save task button -->
         <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                 Text="Save"
                 TextColor="{DynamicResource saveTextCol}"
-                BackgroundColor="PaleGreen"
+                BackgroundColor="{DynamicResource saveCol}"
                 Margin="10,5"
                 Command="{Binding SaveCommand}"/>
 
+        <!-- update task button -->
+        <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                Text="Update"
+                TextColor="{DynamicResource saveTextCol}"
+                BackgroundColor="{DynamicResource saveCol}"
+                Margin="10,5"
+                Command="{Binding UpdateCommand}"/>
+
         <!-- ListView - scrollable list to display everything -->
         <!-- bind to List of all to-do notes -->
-        <ListView x:Name="listOfToDos" Margin="5"
+        <ListView x:Name="listOfToDos" Margin="0,5"
                   ItemsSource="{Binding AllToDos}"
-                  Grid.Row="3" Grid.ColumnSpan="2"
+                  Grid.Row="4" Grid.ColumnSpan="2"
                   SelectedItem="{Binding SelectedToDo}"
                   >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
+                            <!-- checkbox -->
                             <ImageButton
-                                    Source="{DynamicResource buttonImage}"
+                                    Source="{Binding Source={x:Reference listOfToDos},
+                                    Path=BindingContext.CheckboxIcon}"
                                     BackgroundColor="{DynamicResource pageCol}"
                                     Scale="0.6"
                                     Command="{Binding Source={x:Reference listOfToDos},
-                                    Path=BindingContext.MarkDoneCommand}"
-                                    CommandParameter="{Binding .}"/> <!-- tapped --> 
+                                    Path=BindingContext.MarkDoneCommand}" 
+                                    CommandParameter="{Binding .}"/>
+                            <!-- task -->
                             <Label Text="{Binding .}"
                                    TextColor="{DynamicResource textCol}"
-                                   VerticalOptions="Center"/>
+                                   VerticalOptions="Center"/> 
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- change color palette -->
+        <!-- buttons to change color theme -->
         <Button Clicked="OnHighContrast"
                 Text="High Contrast"
                 BackgroundColor="Aquamarine"
                 TextColor="Red"
-                Grid.Row="4"
+                Grid.Row="5"
+                CornerRadius="15"
                 Grid.Column="0"/>
         <Button Clicked="OnLight"
                 Text="Light"
-                Grid.Row="4"
+                BackgroundColor="LightGray"
+                TextColor="Black"
+                CornerRadius="15"
+                Grid.Row="5"
                 Grid.Column="1"/>
     </Grid>
 
+    <!-- resources for customizing appearance -->
     <ContentPage.Resources>
+        <!--
         <ImageSource x:Key="buttonImage">"check.png"</ImageSource>
         <ImageSource x:Key="noteImage">"note.png"</ImageSource>
+        -->
         <Color x:Key="textCol">slategray</Color>
         <Color x:Key="saveCol">palegreen</Color>
         <Color x:Key="saveTextCol">darkgreen</Color>
         <Color x:Key="pageCol">white</Color>
-        <!-- 
-                <Style x:Key="HighContrastButtons" TargetType="ImageButton">
-            <Setter Property="Source" Value="hc_check.png"/>
-        </Style>
-
-        <Style x:Key="HighContrastText" TargetType="Label">
-            <Setter Property="TextColor" Value="Yellow"/>
-        </Style>
-
-        <Style x:Key="HighContrastSave" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#00ff00"/>
-        </Style>
-
-        <Style x:Key="HighContrastPage" TargetType="ContentPage">
-            <Setter Property="BackgroundColor" Value="Black"/>
-        </Style>
-        -->
 
     </ContentPage.Resources>
     
