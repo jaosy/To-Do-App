@@ -88,16 +88,26 @@ namespace To_Do
                 App.Current.MainPage.DisplayAlert("No task selected", "Please tap on a task in the list to update.", null, "Ok");
             }
             else {
-                AllToDos[AllToDos.IndexOf(SelectedToDo)] = TheToDo;
+                if (TheToDo.Equals(string.Empty))
+                {
+                    App.Current.MainPage.DisplayAlert("To-Do is empty! 😭", "You're lying to yourself if you have nothing to do", null, "Ok");
+                    SelectedToDo = null;
+                }
+                else
+                {
+                    AllToDos[AllToDos.IndexOf(SelectedToDo)] = TheToDo;
+                    SelectedToDo = TheToDo;
+                    TheToDo = string.Empty; // clear the editor
+                }
+
 
                 //int originalIndex = AllToDos.IndexOf(SelectedToDo);
+
                 //AllToDos.Remove(SelectedToDo);
 
                 //AllToDos.Add(TheToDo);
 
                 //int addedWrongIndex = AllToDos.IndexOf(TheToDo);
-
-                TheToDo = string.Empty; // clear the editor
 
                 //AllToDos.Move(addedWrongIndex, originalIndex);
             }
@@ -108,7 +118,7 @@ namespace To_Do
         {
             var task = obj as string;
             AllToDos.Remove(task);
-           // AllDone.Add(task);
+            // AllDone.Add(task);
         }
 
         string noteIcon;
