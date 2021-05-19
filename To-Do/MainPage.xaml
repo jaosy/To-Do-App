@@ -18,6 +18,7 @@
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.25*"/> <!-- ProgressBar -->
             <RowDefinition Height="0.25*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -85,19 +86,30 @@
                             <!-- task -->
                             <Label Text="{Binding .}"
                                    TextColor="{DynamicResource textCol}"
-                                   VerticalOptions="Center"/> 
+                                   VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <ProgressBar x:Name="taskProgress"
+                     Grid.Row="5"
+                     Grid.ColumnSpan="2"
+                     HorizontalOptions="Fill"
+                     HeightRequest="20"
+                     WidthRequest="400"
+                     ProgressColor="Orange"
+                     Progress ="{Binding TestProgress}"
+                     >
+        </ProgressBar>
+
         <!-- buttons to change color theme -->
         <Button Clicked="OnHighContrast"
                 Text="High Contrast"
                 BackgroundColor="Aquamarine"
                 TextColor="Red"
-                Grid.Row="5"
+                Grid.Row="6"
                 CornerRadius="15"
                 Grid.Column="0"/>
         <Button Clicked="OnLight"
@@ -105,7 +117,7 @@
                 BackgroundColor="LightGray"
                 TextColor="Black"
                 CornerRadius="15"
-                Grid.Row="5"
+                Grid.Row="6"
                 Grid.Column="1"/>
     </Grid>
 
@@ -119,7 +131,6 @@
         <Color x:Key="saveCol">palegreen</Color>
         <Color x:Key="saveTextCol">darkgreen</Color>
         <Color x:Key="pageCol">white</Color>
-
     </ContentPage.Resources>
     
 </ContentPage>

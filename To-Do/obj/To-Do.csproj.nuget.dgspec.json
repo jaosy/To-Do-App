@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj": {}
+    "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj": {}
   },
   "projects": {
-    "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj": {
+    "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj",
+        "projectUniqueName": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj",
         "projectName": "To-Do",
-        "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj",
+        "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj",
         "packagesPath": "C:\\Users\\Jacqueline\\.nuget\\packages\\",
-        "outputPath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\obj\\",
+        "outputPath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft\\Xamarin\\NuGet\\"

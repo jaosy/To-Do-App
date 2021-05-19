@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 /* thanks to: https://www.youtube.com/watch?v=mBlzs5owIEY
  * 
@@ -30,8 +31,11 @@ namespace To_Do
                 }
                 else
                 {
-                    AllToDos.Add(TheToDo); 
-                    TheToDo = string.Empty; 
+                    AllToDos.Add(TheToDo);
+                    numTotalTasks++;
+                    TheToDo = string.Empty;
+                    _testProgress = (float)AllDone.Count / numTotalTasks;
+                    TestProgress = _testProgress;
                 }
             }
             );
@@ -39,6 +43,11 @@ namespace To_Do
             MarkDoneCommand = new Command<object>(DeleteTask);
 
             UpdateCommand = new Command(UpdateTask);
+
+            XamRightTestCommand = new Command(() =>
+            {
+                Debug.WriteLine("test");
+            });
         }
 
         /* allows us to change color of PlaceholderNote by binding
@@ -55,6 +64,7 @@ namespace To_Do
         }
 
         string theToDo;
+
 
         public string TheToDo
         {
@@ -118,7 +128,9 @@ namespace To_Do
         {
             var task = obj as string;
             AllToDos.Remove(task);
-            // AllDone.Add(task);
+            AllDone.Add(task);
+            _testProgress = (float)AllDone.Count / numTotalTasks;
+            TestProgress = _testProgress;
         }
 
         string noteIcon;
@@ -166,6 +178,26 @@ namespace To_Do
         /* button commands */
         public Command SaveCommand { get; }
         public Command<object> MarkDoneCommand { get; }
+
+        public Command XamRightTestCommand { get; }
         public Command UpdateCommand { get; }
+
+        int numTotalTasks;
+
+        private float _testProgress;
+        public float TestProgress
+        {
+            get => _testProgress;
+            set
+            {
+                if (_testProgress != value) return;
+                
+                    _testProgress = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TestProgress)));
+                
+            }
+        }
+
+
     }
 }

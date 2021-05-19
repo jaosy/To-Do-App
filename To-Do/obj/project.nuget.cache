@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YPE1BsiwX7x5UI4kwCguXIQ/einZQS44buVlQf++iDAw4SdJ0KQHZLkKzyUeFAdA9fi0LDhesIhBooX37Wcgug==",
+  "dgSpecHash": "2amptGULr5uzIc2ZMBzjsYtI9ZLY2TUNR6m8iURxSQFmqCYy8aN2pOFMM89VJK7PsqVPlnY/OA4aq6enqUg2Uw==",
   "success": true,
-  "projectFilePath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj",
+  "projectFilePath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jacqueline\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Jacqueline\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

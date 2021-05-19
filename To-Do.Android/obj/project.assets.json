@@ -1939,11 +1939,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
+      "projectUniqueName": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
       "projectName": "To-Do.Android",
-      "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
+      "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
       "packagesPath": "C:\\Users\\Jacqueline\\.nuget\\packages\\",
-      "outputPath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do.Android\\obj\\",
+      "outputPath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1964,8 +1964,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj": {
-              "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do\\To-Do.csproj"
+            "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj": {
+              "projectPath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do\\To-Do.csproj"
             }
           }
         }

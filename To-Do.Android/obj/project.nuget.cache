@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l77f/g8nC7PkG5xj0R66MYMosAKTCw5fH2jWQJhT8nUAzxJjqpDP7gB1ublqSW8lAYLiEprZoCkLVxv86oz43A==",
+  "dgSpecHash": "HzLXMWZeYK0hHVO1rjEr5bZF7LVm6oL/OlqJaM3fK9yms1wkYt1bWF5ar2C0LrZxkYq24XiFx2OtmrNeuNrSxw==",
   "success": true,
-  "projectFilePath": "D:\\College\\Summer\\Critical Hit Technologies\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
+  "projectFilePath": "D:\\College\\Summer\\Critical Hit Technologies\\Learning Xamarin\\To-Do\\To-Do.Android\\To-Do.Android.csproj",
   "expectedPackageFiles": [
     "D:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "D:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",
